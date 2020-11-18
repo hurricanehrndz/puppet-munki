@@ -24,6 +24,8 @@ class munki::config {
   $use_notification_center_days                  = $munki::use_notification_center_days
   $show_optional_installs_for_higher_os_versions = $munki::show_optional_installs_for_higher_os_versions
   $local_only_manifest_name                      = $munki::local_only_manifest_name
+  $client_resources_filename                     = $munki::client_resources_filename
+  $client_resources_url                          = $munki::client_resources_url
 
   $mcx_settings = {
     'AdditionalHttpHeaders' => $additional_http_headers,
@@ -108,7 +110,7 @@ class munki::config {
   }
 
   mac_profiles_handler::manage { 'ManagedInstalls':
-    ensure      => present,
+    ensure      => absent,
     file_source => plist($profile),
     type        => 'template',
   }
