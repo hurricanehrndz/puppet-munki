@@ -1,5 +1,5 @@
 ---
-munki::munkitools_version: '3.0.3.3352'
+munki::munkitools_version: '3.3.0.3515'
 munki::apple_software_updates_only: false
 munki::client_cert_path: "%{facts.ssldir}/certs/%{facts.certname}.pem"
 munki::client_identifier: ''
@@ -13,6 +13,7 @@ munki::msu_log_enabled: false
 munki::software_repo_ca_cert: "%{facts.ssldir}/certs/ca.pem"
 munki::software_repo_url: ''
 munki::software_update_server_url: ''
+munki::suppress_loginwindow_install: false
 munki::suppress_user_notification: false
 munki::use_client_cert: false
 munki::show_removal_detail: false
@@ -28,3 +29,31 @@ munki::managed_installs: []
 munki::managed_uninstalls: []
 munki::show_optional_installs_for_higher_os_versions: false
 munki::local_only_manifest_name: 'extra_packages'
+munki::use_aio: false
+munki::munkitools_admin_checksum: ''
+munki::munkitools_admin_receipt: ''
+munki::munkitools_admin_source: ''
+munki::munkitools_admin_version: ''
+munki::munkitools_app_usage_checksum: ''
+munki::munkitools_app_usage_receipt: ''
+munki::munkitools_app_usage_source: ''
+munki::munkitools_app_usage_version: ''
+munki::munkitools_checksum: ''
+munki::munkitools_core_checksum: ''
+munki::munkitools_core_receipt: ''
+munki::munkitools_core_source: ''
+munki::munkitools_core_version: ''
+munki::munkitools_receipt: ''
+munki::munkitools_source: ''
+munki::munkitools_source: ''
+munki::munkitools_launchd_checksum: ''
+munki::munkitools_launchd_receipt: ''
+munki::munkitools_launchd_source: ''
+munki::munkitools_launchd_version: ''
+munki::munkitools_python_checksum: ''
+munki::munkitools_python_receipt: ''
+munki::munkitools_python_source: ''
+munki::munkitools_python_version: ''
+munki::http_user: ''
+munki::http_password: ''
+munki::munki_python: true

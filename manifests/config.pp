@@ -14,6 +14,7 @@ class munki::config {
   $software_repo_url                             = $munki::software_repo_url
   $software_update_server_url                    = $munki::software_update_server_url
   $suppress_user_notification                    = $munki::suppress_user_notification
+  $suppress_loginwindow_install                  = $munki::suppress_loginwindow_install
   $use_client_cert                               = $munki::use_client_cert
   $additional_http_headers                       = $munki::additional_http_headers
   $payload_organization                          = $munki::payload_organization
@@ -23,12 +24,12 @@ class munki::config {
   $use_notification_center_days                  = $munki::use_notification_center_days
   $show_optional_installs_for_higher_os_versions = $munki::show_optional_installs_for_higher_os_versions
   $local_only_manifest_name                      = $munki::local_only_manifest_name
+  $client_resources_filename                     = $munki::client_resources_filename
+  $client_resources_url                          = $munki::client_resources_url
 
   $mcx_settings = {
     'AdditionalHttpHeaders' => $additional_http_headers,
     'AppleSoftwareUpdatesOnly' => $apple_software_updates_only,
-    'ClientCertificatePath' => $client_cert_path,
-    'ClientKeyPath' => $client_key_path,
     'ClientIdentifier' => $client_identifier,
     'DaysBetweenNotifications' => $days_between_notifications,
     'InstallAppleSoftwareUpdates' => $install_apple_software_updates,
@@ -36,8 +37,8 @@ class munki::config {
     'LoggingLevel' => $logging_level,
     'LogToSyslog' => $log_to_syslog,
     'MSULogEnabled' => $msu_log_enabled,
-    'SoftwareRepoCACertificate' => $software_repo_ca_cert,
     'SoftwareRepoURL' => $software_repo_url,
+    'SuppressLoginwindowInstall' => $suppress_loginwindow_install,
     'SuppressUserNotification' => $suppress_user_notification,
     'UseClientCertificate' => $use_client_cert,
     'ShowRemovalDetail' => $show_removal_detail,
@@ -49,11 +50,18 @@ class munki::config {
   $managed_installs = lookup('munki::managed_installs', Array, 'unique', [])
   $managed_uninstalls = lookup('munki::managed_uninstalls', Array, 'unique', [])
 
+  if $use_client_cert == true {
+    $cert_settings = {'ClientCertificatePath' => $client_cert_path, 'ClientKeyPath' => $client_key_path, 'SoftwareRepoCACertificate' => $software_repo_ca_cert}
+    $settings_with_cert = merge($mcx_settings, $cert_settings)
+  } else {
+    $settings_with_cert = $mcx_settings
+  }
+
   if $software_update_server_url != '' {
     $sus_settings = {'software_update_server_url' => $software_update_server_url}
-    $settings_with_sus_url = merge($mcx_settings, $sus_settings)
+    $settings_with_sus_url = merge($settings_with_cert, $sus_settings)
   } else {
-    $settings_with_sus_url = $mcx_settings
+    $settings_with_sus_url = $settings_with_cert
   }
 
   if $managed_installs != [] or $managed_uninstalls != [] {
@@ -102,7 +110,7 @@ class munki::config {
   }
 
   mac_profiles_handler::manage { 'ManagedInstalls':
-    ensure      => present,
+    ensure      => absent,
     file_source => plist($profile),
     type        => 'template',
   }

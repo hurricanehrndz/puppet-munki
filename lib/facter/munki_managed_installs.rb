@@ -1,12 +1,11 @@
 # munki_managed_installs.rb
 
-require 'puppet/util/plist' if Puppet.features.cfpropertylist?
-
 report_plist = '/Library/Managed Installs/ManagedInstallReport.plist'
 
 Facter.add(:munki_managed_installs) do
   confine kernel: 'Darwin'
   setcode do
+    require 'puppet/util/plist' if Puppet.features.cfpropertylist?
     output = {}
     if File.exist?(report_plist)
       plist = Puppet::Util::Plist.read_plist_file(report_plist)
@@ -18,13 +17,15 @@ Facter.add(:munki_managed_installs) do
                               else
                                 'unknown'
                               end
+          # rubocop:disable AlignHash
           output[install['name']] = {
-            'display_name' => install['display_name'],
+            'display_name'      => install['display_name'],
             'name'              => install['name'],
             'installed'         => install['installed'],
             'installed_size'    => install['installed_size'],
             'installed_version' => installed_version
           }
+          # rubocop:enable AlignHash
         end
       end
     end
