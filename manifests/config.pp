@@ -99,7 +99,7 @@ class munki::config {
       }
     ],
     'PayloadDescription' => "Included custom settings:\nManagedInstalls",
-    'PayloadDisplayName' => 'Settings for Munki',
+    'PayloadDisplayName' => 'Settings for Sushi Boat',
     'PayloadIdentifier' => 'ManagedInstalls',
     'PayloadOrganization' => $payload_organization,
     'PayloadRemovalDisallowed' => true,
