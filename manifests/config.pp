@@ -92,9 +92,9 @@ class munki::config {
           }
         },
         'PayloadEnabled' => true,
-        'PayloadIdentifier' => '59656c70d-eb90-4ee2-a487-4cbe1e9b7ec1', # lint:ignore:140chars
+        'PayloadIdentifier' => 'com.yelpcorp.managedinstalls.config', # lint:ignore:140chars
         'PayloadType' => 'com.apple.ManagedClient.preferences',
-        'PayloadUUID' => '59656c70f-73f8-495e-a5d6-4e3753f21c2d',
+        'PayloadUUID' => '59656c70d-eb90-4ee2-a487-4cbe1e9b7ec1',
         'PayloadVersion' => 1
       }
     ],
@@ -105,7 +105,7 @@ class munki::config {
     'PayloadRemovalDisallowed' => true,
     'PayloadScope' => 'System',
     'PayloadType' => 'Configuration',
-    'PayloadUUID' => '1dc15df4-d4c4-4b3a-b507-dd8f3b44f093',
+    'PayloadUUID' => '59656c70f-73f8-495e-a5d6-4e3753f21c2d',
     'PayloadVersion' => 1
   }
 
