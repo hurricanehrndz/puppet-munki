@@ -83,7 +83,7 @@ class munki::config {
     'PayloadContent' => [
       {
         'PayloadContent' => {
-          'ManagedInstalls' => {
+          'Doink_de_doink' => {
             'Forced' => [
               {
                 'mcx_preference_settings' => $settings_to_write
@@ -92,13 +92,13 @@ class munki::config {
           }
         },
         'PayloadEnabled' => true,
-        'PayloadIdentifier' => 'com.yelpcorp.managedinstalls.config', # lint:ignore:140chars
+        'PayloadIdentifier' => 'com.yelpcorp.Doink_de_doink.config', # lint:ignore:140chars
         'PayloadType' => 'com.apple.ManagedClient.preferences',
         'PayloadUUID' => '59656c70d-eb90-4ee2-a487-4cbe1e9b7ec1',
         'PayloadVersion' => 1
       }
     ],
-    'PayloadDescription' => "Included custom settings:\nManagedInstalls",
+    'PayloadDescription' => "Included custom settings:\Doink_de_doink",
     'PayloadDisplayName' => 'Settings for Sushi Boat',
     'PayloadIdentifier' => 'Doink_de_doink',
     'PayloadOrganization' => $payload_organization,
@@ -109,7 +109,7 @@ class munki::config {
     'PayloadVersion' => 1
   }
 
-  mac_profiles_handler::manage { 'ManagedInstalls':
+  mac_profiles_handler::manage { 'Doink_de_doink':
     ensure      => present,
     file_source => plist($profile),
     type        => 'template',
