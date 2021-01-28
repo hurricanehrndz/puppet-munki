@@ -100,7 +100,7 @@ class munki::config {
     ],
     'PayloadDescription' => "Included custom settings:\nManagedInstalls",
     'PayloadDisplayName' => 'Settings for Munki',
-    'PayloadIdentifier' => 'ManagedInstalls',
+    'PayloadIdentifier' => 'doink_de_doink'
     'PayloadOrganization' => $payload_organization,
     'PayloadRemovalDisallowed' => true,
     'PayloadScope' => 'System',
@@ -110,7 +110,7 @@ class munki::config {
   }
 
   mac_profiles_handler::manage { 'ManagedInstalls':
-    ensure      => absent,
+    ensure      => present,
     file_source => plist($profile),
     type        => 'template',
   }
