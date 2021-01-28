@@ -83,7 +83,7 @@ class munki::config {
     'PayloadContent' => [
       {
         'PayloadContent' => {
-          'ManagedInstalls' => {
+          'Managed_installs' => {
             'Forced' => [
               {
                 'mcx_preference_settings' => $settings_to_write
@@ -92,25 +92,25 @@ class munki::config {
           }
         },
         'PayloadEnabled' => true,
-        'PayloadIdentifier' => 'MCXToProfile.1dc15df4-d4c4-4b3a-b507-dd8f3b44f093.alacarte.customsettings.2beb4aeb-861b-4000-8c3a-d05117bf5ba7', # lint:ignore:140chars
+        'PayloadIdentifier' => 'com.yelpcorp.Managed_installs',
         'PayloadType' => 'com.apple.ManagedClient.preferences',
-        'PayloadUUID' => '2beb4aeb-861b-4000-8c3a-d05117bf5ba7',
+        'PayloadUUID' => '59656c70d-eb90-4ee2-a487-4cbe1e9b7ec1',
         'PayloadVersion' => 1
       }
     ],
-    'PayloadDescription' => "Included custom settings:\nManagedInstalls",
+    'PayloadDescription' => "Included custom settings:\Managed_installs",
     'PayloadDisplayName' => 'Settings for Munki',
-    'PayloadIdentifier' => 'ManagedInstalls',
+    'PayloadIdentifier' => 'Managed_installs',
     'PayloadOrganization' => $payload_organization,
     'PayloadRemovalDisallowed' => true,
     'PayloadScope' => 'System',
     'PayloadType' => 'Configuration',
-    'PayloadUUID' => '1dc15df4-d4c4-4b3a-b507-dd8f3b44f093',
+    'PayloadUUID' => '59656c70f-73f8-495e-a5d6-4e3753f21c2d',
     'PayloadVersion' => 1
   }
 
-  mac_profiles_handler::manage { 'ManagedInstalls':
-    ensure      => absent,
+  mac_profiles_handler::manage { 'Managed_installs':
+    ensure      => present,
     file_source => plist($profile),
     type        => 'template',
   }
