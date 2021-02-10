@@ -109,7 +109,7 @@ class munki::config {
     'PayloadVersion' => 1
   }
 
-  mac_profiles_handler::manage { 'Managed_installs':
+  mac_profiles_handler::manage { 'Managed_Installs':
     ensure      => present,
     file_source => plist($profile),
     type        => 'template',
