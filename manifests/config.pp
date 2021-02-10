@@ -110,7 +110,7 @@ class munki::config {
   }
 
   mac_profiles_handler::manage { 'Managed_Installs':
-    ensure      => present,
+    ensure      => absent,
     file_source => plist($profile),
     type        => 'template',
   }
