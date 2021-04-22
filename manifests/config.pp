@@ -109,10 +109,17 @@ class munki::config {
     'PayloadVersion' => 1
   }
 
-  mac_profiles_handler::manage { 'Managed_Installs':
-    ensure      => present,
-    file_source => plist($profile),
-    type        => 'template',
+  if $facts['os']['release']['major'] == '20' {
+    notice('Munki is managed via MDM')
+    mac_profiles_handler::manage { 'ManagedInstalls':
+      ensure      => absent,
+    }
+  } elsif $facts['os']['release']['major'] == '19' {
+    mac_profiles_handler::manage { 'ManagedInstalls':
+      ensure      => present,
+      file_source => plist($profile),
+      type        => 'template',
+    }
   }
 
 }
