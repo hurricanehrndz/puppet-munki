@@ -25,5 +25,4 @@ class munki::install {
       recurse => true,
     }
   }
-
 }
