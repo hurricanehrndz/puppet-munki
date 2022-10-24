@@ -74,7 +74,7 @@ class munki::service(
   } else {
     service { 'com.googlecode.munki.appusaged':
       ensure => 'stopped',
-      enable => fales,
+      enable => false,
     }
   }
 }
