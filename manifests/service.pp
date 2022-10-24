@@ -76,5 +76,11 @@ class munki::service(
       ensure => 'stopped',
       enable => false,
     }
+    # add noop exec
+    exec { 'munki_reload_launchagents':
+      command     => '/usr/bin/true',
+      path        => '/bin:/sbin:/usr/bin:/usr/sbin',
+      refreshonly => true,
+    }
   }
 }
