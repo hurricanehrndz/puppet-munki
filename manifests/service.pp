@@ -51,6 +51,7 @@ class munki::service(
     enable => true,
   }
 
+
   if $track_appusage {
     service { 'com.googlecode.munki.appusaged':
       ensure  => 'running',
@@ -69,6 +70,11 @@ class munki::service(
       path        => '/bin:/sbin:/usr/bin:/usr/sbin',
       provider    => 'shell',
       refreshonly => true,
+    }
+  } else {
+    service { 'com.googlecode.munki.appusaged':
+      ensure => 'stopped',
+      enable => fales,
     }
   }
 }
