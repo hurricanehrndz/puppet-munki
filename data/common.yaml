@@ -57,3 +57,6 @@ munki::munkitools_python_version: ''
 munki::http_user: ''
 munki::http_password: ''
 munki::munki_python: true
+munki::schedule_runs: false
+munki::track_appusage: false
+
