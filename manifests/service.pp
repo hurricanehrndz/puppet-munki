@@ -1,7 +1,7 @@
 # Ensure munki's services are running
 class munki::service(
-  $scheduled_runs = true,
-  $track_appusage = true,
+  $scheduled_runs = $munki::scheduled_runs,
+  $track_appusage = $munki::track_appusage,
 ) {
 
   $post_v3_agents_cmd = '# get console UID

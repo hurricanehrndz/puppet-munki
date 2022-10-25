@@ -63,6 +63,8 @@ class munki (
   Boolean $munki_python,
   String $client_resources_filename,
   String $client_resources_url,
+  Boolean $scheduled_runs,
+  Boolean $track_appusage,
 )
 {
   class { '::munki::config': }
